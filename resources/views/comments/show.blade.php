@@ -3,7 +3,7 @@
 @section('main') 
 <div class="row"> 
 <div class="col-sm-12"> 
-    <div>
+    <body>
         <h1>View Comment Bank</h1> 
         <div> 
             <a style="margin: 15px;" href="/" class = "btn btn-primary">Main Menu</a>
@@ -17,6 +17,6 @@
         </div>
         <div class="output">
         </div> 
-    </div> 
-</div> 
+    </body>
+</div>  
 </div> 
