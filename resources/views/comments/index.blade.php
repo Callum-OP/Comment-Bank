@@ -9,7 +9,7 @@
     </div> 
 @endif 
 </div> 
-    <h1 class="display-3">Comments</h1>
+    <h1 class="display-3">Modify Comment Bank</h1>
     <div> 
       <a style="margin: 15px;" href="/" class = "btn btn-primary">Main Menu</a>
       <a style="margin: 15px;" href="{{ route('comments.create')}}" class="btn btn-primary">New comment</a>

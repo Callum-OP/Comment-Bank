@@ -54,7 +54,7 @@ class CommentController extends Controller
             'tone' => $request->get('tone')
         ]); 
         $comment->save(); 
-        return redirect('/comments')->with('success', 'Comment saved!');
+        return redirect('/')->with('success', 'Comment saved!');
     }
 
     /**

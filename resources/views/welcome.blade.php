@@ -10,7 +10,8 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
         <!-- Styles -->
-        <style>
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css"/>
+        <style> 
             html, body {
                 background-color: #fff;
                 color: #636b6f;
@@ -50,7 +51,7 @@
 
             .links > a {
                 color: #636b6f;
-                padding: 0 25px;
+                padding: 8px 8px 8px 8px;
                 font-size: 13px;
                 font-weight: 600;
                 letter-spacing: .1rem;
@@ -85,8 +86,9 @@
                 </div>
 
                 <div class="links">
-                    <a style="margin: 15px;" class="btn btn-primary" href="comments/"><b>Modify Comment Bank</b></a>
-                    <a style="margin: 15px;" class="btn btn-primary" href="comments/display"><b>View Comment Bank</b></a>
+                    <a style="margin: 15px;" class="btn btn-primary" href="comments/display"><b>View Comments</b></a>
+                    <a style="margin: 15px;" class="btn btn-primary" href="comments/"><b>Modify Comments</b></a>
+                    <a style="margin: 15px;" class="btn btn-primary" href=""><b>Verify Comments</b></a>
                 </div>
             </div>
         </div>
