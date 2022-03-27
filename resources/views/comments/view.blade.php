@@ -2,16 +2,11 @@
 
 @section('main') 
 <div class="row"> 
-<div class="col-sm-12">  
-@if(session()->get('success')) 
-    <div class="alert alert-success"> 
-      {{ session()->get('success') }}   
-    </div> 
-@endif 
+<div class="col-sm-8 offset-sm-2"> 
 </div> 
     <h1 class="display-3">Comments</h1>
     <div> 
-    <a style="margin: 15px;" href="{{ route('comments.create')}}" class="btn btn-primary">New comment</a> 
+    <a style="margin: 15px;" href="{{ route('comments.create')}}" class="btn btn-primary">New comment</a>
     <br></br>
     </div>        
   <table class="table table-striped"> 

@@ -20,31 +20,6 @@ class CommentController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function view()
-    {
-        $comments = Comment::all(); 
-
-        return view('comments.view');
-    }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function modify()
-    {
-        $comments = Comment::all(); 
-
-        return view('comments.modify');
-    }
-
-
-    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
