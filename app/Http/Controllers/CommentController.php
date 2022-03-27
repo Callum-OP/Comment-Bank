@@ -63,9 +63,11 @@ class CommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id) 
+    public function show() 
     { 
-        return view('comments.show', compact('id'));         
+        $comments = Comment::all(); 
+
+        return view('comments.show', compact('comments'));         
     }
 
     /**

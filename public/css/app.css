@@ -52,15 +52,13 @@ input[type=submit]:hover {
   color: #333333;
 }
 
-table, td {
+.table-edit {
   border: 1px solid;
-}
-
-.table {
   width: 100%;
 }
 
-.th {
-  height: 70px;
+.table-display {
+  border-collapse: collapse;
+  width: 0%;
 }
 

@@ -86,7 +86,7 @@
 
                 <div class="links">
                     <a style="margin: 15px;" class="btn btn-primary" href="comments/"><b>Modify Comment Bank</b></a>
-                    <a style="margin: 15px;" class="btn btn-primary" href="comments/"><b>View Comment Bank</b></a>
+                    <a style="margin: 15px;" class="btn btn-primary" href="display/"><b>View Comment Bank</b></a>
                     <a href="https://laravel.com/docs">Docs</a>
                     <a href="https://laracasts.com">Laracasts</a>
                     <a href="https://laravel-news.com">News</a>

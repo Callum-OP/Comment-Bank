@@ -36,8 +36,8 @@
           </div> 
           <div class="form-group"> 
               <label for="tone">Comment Tone:</label> 
-              <input type="radio" class="form-control" name="tone" value="positive">Positive</input>
-              <input type="radio" class="form-control" name="tone" value="negative">Negative</input>
+              <input type="radio" class="form-control" name="tone" value="Positive">Positive</input>
+              <input type="radio" class="form-control" name="tone" value="Negative">Negative</input>
           </div>                         
           <button type="submit" class="btn btn-primary">Add comment</button> 
       </form> 

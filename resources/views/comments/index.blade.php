@@ -14,7 +14,7 @@
     <a style="margin: 15px;" href="{{ route('comments.create')}}" class="btn btn-primary">New comment</a>
     <br></br>
     </div>        
-  <table class="table table-striped"> 
+  <table class="table table-modify"> 
     <thead> 
         <tr> 
           <td>ID</td>
