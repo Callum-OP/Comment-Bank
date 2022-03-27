@@ -5,7 +5,7 @@
 <div class="col-sm-12"> 
     <h1>Comment Bank</h1> 
     <div> 
-        <a style="margin: 15px;" href="/comments" class = "btn btn-primary">Main Menu</a>
+        <a style="margin: 15px;" href="/" class = "btn btn-primary">Main Menu</a>
         <a style="margin: 15px;" href="{{ route('comments.create')}}" class="btn btn-primary">New comment</a>
         <br></br> 
     </div>

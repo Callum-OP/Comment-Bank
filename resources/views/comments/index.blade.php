@@ -11,8 +11,9 @@
 </div> 
     <h1 class="display-3">Comments</h1>
     <div> 
-    <a style="margin: 15px;" href="{{ route('comments.create')}}" class="btn btn-primary">New comment</a>
-    <br></br>
+      <a style="margin: 15px;" href="/" class = "btn btn-primary">Main Menu</a>
+      <a style="margin: 15px;" href="{{ route('comments.create')}}" class="btn btn-primary">New comment</a>
+      <br></br>
     </div>        
   <table class="table table-modify"> 
     <thead> 
