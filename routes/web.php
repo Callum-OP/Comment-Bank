@@ -15,4 +15,4 @@ Route::get('/', function () {
     return view('welcome'); 
 }); 
 
-Route::resource('comments', 'CommentController'); 
+Route::resource('comments', 'CommentController');  

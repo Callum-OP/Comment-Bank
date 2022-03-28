@@ -4,13 +4,13 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Comment Bank</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
         <!-- Styles -->
-        <link href="{{ asset('css/comments.css') }}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('css/bank.css') }}" rel="stylesheet" type="text/css"/>
         <style> 
             html, body {
                 background-color: #fff;

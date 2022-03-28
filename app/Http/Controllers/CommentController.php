@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Comment;
+use App\Terminology;
+use App\Results;
 
 class CommentController extends Controller
 {
@@ -14,9 +15,10 @@ class CommentController extends Controller
      */
     public function index()
     {
-        $comments = Comment::all(); 
+        $terminologies = Terminology::all();
+        $results = Results::all();
 
-        return view('comments.index', compact('comments'));
+        return view('comments.index', compact('terminologies'), compact('results'));
     }
 
     /**
@@ -31,7 +33,7 @@ class CommentController extends Controller
         }
     }
 
-    /**
+            /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -46,14 +48,29 @@ class CommentController extends Controller
             'email'=>'required'
         ]); 
 
-        $comment = new Comment([ 
-            'comment' => $request->get('comment'),
-            'first_name' => $request->get('first_name'), 
-            'last_name' => $request->get('last_name'), 
-            'email' => $request->get('email'), 
-            'tone' => $request->get('tone')
-        ]); 
-        $comment->save(); 
+        if($request->get('type') == "Terminology")
+        {
+            $terminologies = new Terminology([ 
+                'comment' => $request->get('comment'),
+                'first_name' => $request->get('first_name'), 
+                'last_name' => $request->get('last_name'), 
+                'email' => $request->get('email'), 
+                'tone' => $request->get('tone')
+            ]); 
+            $terminologies->save(); 
+        }
+        elseif($request->get('type') == "Results")
+        {
+            $results = new Results([ 
+                'comment' => $request->get('comment'),
+                'first_name' => $request->get('first_name'), 
+                'last_name' => $request->get('last_name'), 
+                'email' => $request->get('email'), 
+                'tone' => $request->get('tone')
+            ]); 
+            $results->save();
+        } 
+
         return redirect('/')->with('success', 'Comment saved!');
     }
 
@@ -65,9 +82,10 @@ class CommentController extends Controller
      */
     public function show() 
     { 
-        $comments = Comment::all(); 
+        $terminologies = Terminology::all();
+        $results = Results::all();
 
-        return view('comments.show', compact('comments'));         
+        return view('comments.show', compact('terminologies'), compact('results'));        
     }
 
     /**

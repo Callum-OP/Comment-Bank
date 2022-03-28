@@ -12,12 +12,11 @@
   <body>
       <h1>Modify Comment Bank</h1>
       <div> 
-        <a style="margin: 15px;" href="/" class = "btn btn-primary">Main Menu</a>
-        <a style="margin: 15px;" href="{{ route('comments.create')}}" class="btn btn-primary">New comment</a>
+        <a style="margin: 15px;" href="/" class = "btn btn-primary">Back to Main Menu</a>
         <br></br>
       </div>
-    <h3>Results Comments</h3>         
-    <table class="table table-modify"> 
+    <h3>Results Comments</h3>
+    <table class="table table-zebra"> 
       <thead> 
           <tr> 
             <td>ID</td>
@@ -29,7 +28,7 @@
           </tr> 
       </thead> 
       <tbody> 
-          @foreach($comments as $comment) 
+          @foreach($results as $comment) 
           <tr> 
               <td>{{$comment->id}}</td> 
               <td>{{$comment->comment}}</td> 
@@ -50,8 +49,10 @@
           @endforeach 
       </tbody> 
     </table> 
+    <p></p>
+    <a style="margin: 15px;" href="{{ route('comments.create')}}" class="btn btn-primary">New Results Comment</a>
     <br></br>
-    <h3>Terminology Comments</h3> 
+    <h3>Terminology Comments</h3>
     <table class="table table-modify"> 
       <thead> 
           <tr> 
@@ -64,7 +65,7 @@
           </tr> 
       </thead> 
       <tbody> 
-          @foreach($comments as $comment) 
+          @foreach($terminologies as $comment) 
           <tr> 
               <td>{{$comment->id}}</td> 
               <td>{{$comment->comment}}</td> 
@@ -85,6 +86,9 @@
           @endforeach 
       </tbody> 
     </table> 
+    <p></p>
+    <a style="margin: 15px;" href="{{ route('comments.create')}}" class="btn btn-primary">New Terminology Comment</a>
+    <br></br>
   </body>
 </div> 
 @endsection 
