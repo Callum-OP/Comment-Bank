@@ -5,42 +5,46 @@ html, body{
   font-weight: 200;
   height: 100vh;
   margin: 0;
-}
-
-.container {
-  border-radius: 5px;
-  background-color: #f2f2f2;
   padding: 20px;
 }
 
 .btn{
-  font: bold 12px Arial;
+  font: bold 13px sans-serif;
   text-decoration: none;
+  letter-spacing: .1rem;
+  text-decoration: none;
+  text-transform: uppercase;
   padding: 8px 8px 8px 8px;
   border-top: 1px solid #CCCCCC;
   border-right: 1px solid #333333;
   border-bottom: 1px solid #333333;
   border-left: 1px solid #CCCCCC;
+  color: #636b6f;
+  padding: 8px 8px 8px 8px;
 }
 
 .btn-danger {
   background-color: #c00000;
-  color: #ffffff;
+  color: #fff;
 }
 
 .btn-primary {
-  background-color: blue;
-  color: #333333;
+  background-color: #fff;
+  color: #636b6f;
 }
 
-.table-edit {
-  border: 1px solid;
-  width: 100%;
+tr:nth-child(even) {
+  background-color: #f2f2f2;
 }
 
-.table-display {
+thead {
+  background-color: #f2f2f2;
+}
+
+table {
   border-collapse: collapse;
-  width: 0%;
+  width: 100%;
+  padding: 40px;
 }
 
 input[type=text], select, textarea {
