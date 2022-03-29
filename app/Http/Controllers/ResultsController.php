@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Terminology;
 use App\Results;
 
-class CommentController extends Controller
+class ResultsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,10 +14,7 @@ class CommentController extends Controller
      */
     public function index()
     {
-        $terminologies = Terminology::all();
-        $results = Results::all();
-
-        return view('comments.index', compact('terminologies'), compact('results'));
+        //
     }
 
     /**
@@ -29,7 +25,7 @@ class CommentController extends Controller
     public function create()
     {
         { 
-            return view('comments.create'); 
+            return view('results.create'); 
         }
     }
 
@@ -47,19 +43,6 @@ class CommentController extends Controller
             'last_name'=>'required', 
             'email'=>'required'
         ]); 
-
-        if($request->get('type') == "Terminology")
-        {
-            $terminologies = new Terminology([ 
-                'comment' => $request->get('comment'),
-                'first_name' => $request->get('first_name'), 
-                'last_name' => $request->get('last_name'), 
-                'email' => $request->get('email'), 
-                'tone' => $request->get('tone')
-            ]); 
-            $terminologies->save(); 
-        }
-        elseif($request->get('type') == "Results")
         {
             $results = new Results([ 
                 'comment' => $request->get('comment'),
@@ -75,20 +58,14 @@ class CommentController extends Controller
     }
 
     /**
-     * Display a specified resource.
-     *
-     * @param  /int  $id
-     * @r     * Display the specified resource.
+     * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show() 
-    { 
-        $terminologies = Terminology::all();
-        $results = Results::all();
-
-        return view('comments.show', compact('terminologies'), compact('results'));        
+    public function show($id)
+    {
+        //
     }
 
     /**
@@ -97,16 +74,17 @@ class CommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id) 
-    { 
-        $comment = Comment::find($id); 
-        return view('comments.edit', compact('comment'));  
-    }       
+    public function edit($id)
+    {
+        $results = Results::find($id);
+        return view('results.edit', compact('results'));
+    }
 
-                /**
-     * Update and add an already created resource in storage.
+    /**
+     * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -117,16 +95,16 @@ class CommentController extends Controller
             'email'=>'required' 
         ]); 
 
-        $comment = Comment::find($id); 
-        $comment->comment = $request->get('comment'); 
-        $comment->first_name = $request->get('first_name'); 
-        $comment->last_name = $request->get('last_name'); 
-        $comment->email = $request->get('email');  
-        $comment->tone = $request->get('tone'); 
-        $comment->save(); 
+        $results = Results::find($id); 
+        $results->comment = $request->get('comment'); 
+        $results->first_name = $request->get('first_name'); 
+        $results->last_name = $request->get('last_name'); 
+        $results->email = $request->get('email');  
+        $results->tone = $request->get('tone'); 
+        $results->save(); 
 
         return redirect('/comments')->with('success', 'Comment updated!'); 
-    } 
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -136,9 +114,6 @@ class CommentController extends Controller
      */
     public function destroy($id)
     {
-        $comment = Comment::find($id); 
-        $comment->delete(); 
-
-        return redirect('/comments')->with('success', 'Comment deleted!');
+        //
     }
 }

@@ -16,3 +16,5 @@ Route::get('/', function () {
 }); 
 
 Route::resource('comments', 'CommentController');  
+Route::resource('results', 'ResultsController');  
+Route::resource('terminologies', 'TerminologyController');

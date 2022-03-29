@@ -3,7 +3,11 @@
 @section('main') 
 <div class="row"> 
 <div class="col-sm-8 offset-sm-2"> 
-    <h1 class="display-3">Add a Terminology Comment</h1> 
+    <h1 class="display-3">Add Terminology Comment</h1> 
+    <div> 
+      <a style="margin: 15px;" href="/" class = "btn btn-primary">Back to Main Menu</a>
+      <br><p></p></br>
+    </div>
   <div> 
     @if ($errors->any()) 
       <div class="alert alert-danger"> 
@@ -14,12 +18,20 @@
         </ul> 
       </div><br /> 
     @endif 
-      <form method="post" action="{{ route('comments.store')}}">
-          @csrf 
+      <form method="post" action="{{ route('terminologies.store')}}">
+          @csrf  
           <div class="form-group">     
               <label for="comment">Comment:</label> 
               <input type="text" class="form-control" name="comment" required> 
+          </div>
+
+          <div class="form-group"> 
+              <label for="tone">Comment Tone:</label> 
+              <input type="radio" class="form-control" name="tone" value="Positive">Positive</input>
+              <input type="radio" class="form-control" name="tone" value="Negative">Negative</input>
           </div> 
+
+          <br></br> 
           <div class="form-group">     
               <label for="first_name">First Name:</label> 
               <input type="text" class="form-control" name="first_name" required autocomplete="off" value="{{ old('first_name') }}"> 
@@ -33,13 +45,8 @@
           <div class="form-group"> 
               <label for="email">Email:</label> 
               <input type="text" class="form-control" name="email" required> 
-          </div> 
-          <div class="form-group"> 
-              <label for="tone">Comment Tone:</label> 
-              <input type="radio" class="form-control" name="tone" value="Positive">Positive</input>
-              <input type="radio" class="form-control" name="tone" value="Negative">Negative</input>
-          </div>                         
-          <button type="submit" class="btn btn-primary">Add comment</button> 
+          </div>                     
+          <button style="margin: 15px;" type="submit" class="btn btn-primary">Add comment</button> 
       </form> 
   </div> 
 </div> 

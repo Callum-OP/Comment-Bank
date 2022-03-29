@@ -28,9 +28,13 @@ html, body{
   color: #fff;
 }
 
-.btn-primary {
+.btn-primary, .btn-action {
   background-color: #fff;
   color: #636b6f;
+}
+
+.btn-primary {
+  margin: 15px;
 }
 
 tr:nth-child(even) {

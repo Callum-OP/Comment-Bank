@@ -10,7 +10,7 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
         <!-- Styles -->
-        <link href="{{ asset('css/bank.css') }}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css"/>
         <style> 
             html, body {
                 background-color: #fff;
@@ -86,7 +86,7 @@
                 </div>
 
                 <div class="links">
-                    <a style="margin: 15px;" class="btn btn-primary" href="comments/display"><b>View Comments</b></a>
+                    <a style="margin: 15px;" class="btn btn-primary" href="comments/view"><b>View Comments</b></a>
                     <a style="margin: 15px;" class="btn btn-primary" href="comments/"><b>Modify Comments</b></a>
                     <a style="margin: 15px;" class="btn btn-primary" href=""><b>Verify Comments</b></a>
                 </div>
