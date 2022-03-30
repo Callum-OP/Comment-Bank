@@ -7,7 +7,7 @@
   </div> 
   @endif  
   <body>
-    <h1 id="header">Modify Comment Bank</h1>
+    <h1 id="header">Verify Comment Bank</h1>
     <div> 
       <a href="/" class="btn btn-primary">Back to Main Menu</a><a href="#results" class="btn btn-primary">To Results</a><a href="#terminology" class="btn btn-primary">To Terminology</a>
       <br></br> 

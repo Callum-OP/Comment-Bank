@@ -1,8 +1,6 @@
 @extends('base') 
-
 @section('main') 
-<div class="row"> 
-<div class="col-sm-8 offset-sm-2"> 
+<div class="container"> 
     <h1 class="display-3">Add Results Comment</h1> 
     <div> 
       <a style="margin: 15px;" href="/" class = "btn btn-primary">Back to Main Menu</a>
@@ -49,6 +47,5 @@
           <button type="submit" class="btn btn-primary">Add comment</button> 
       </form> 
   </div> 
-</div> 
-</div> 
+</div>  
 @endsection 

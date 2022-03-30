@@ -21,6 +21,14 @@ class CommentController extends Controller
         return view('comments.index', compact('terminologies'), compact('results'));
     }
 
+    public function verify()
+    {
+        $terminologies = Terminology::all();
+        $results = Results::all();
+
+        return view('comments.verify', compact('terminologies'), compact('results'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -41,37 +49,7 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([ 
-            'comment'=>'required', 
-            'first_name'=>'required', 
-            'last_name'=>'required', 
-            'email'=>'required'
-        ]); 
 
-        if($request->get('type') == "Terminology")
-        {
-            $terminologies = new Terminology([ 
-                'comment' => $request->get('comment'),
-                'first_name' => $request->get('first_name'), 
-                'last_name' => $request->get('last_name'), 
-                'email' => $request->get('email'), 
-                'tone' => $request->get('tone')
-            ]); 
-            $terminologies->save(); 
-        }
-        elseif($request->get('type') == "Results")
-        {
-            $results = new Results([ 
-                'comment' => $request->get('comment'),
-                'first_name' => $request->get('first_name'), 
-                'last_name' => $request->get('last_name'), 
-                'email' => $request->get('email'), 
-                'tone' => $request->get('tone')
-            ]); 
-            $results->save();
-        } 
-
-        return redirect('/')->with('success', 'Comment saved!');
     }
 
     /**
@@ -97,10 +75,9 @@ class CommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id) 
+    public function update($id) 
     { 
-        $comment = Comment::find($id); 
-        return view('comments.edit', compact('comment'));  
+
     }       
 
                 /**
@@ -109,23 +86,9 @@ class CommentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function edit(Request $request, $id)
     {
-        $request->validate([ 
-            'first_name'=>'required', 
-            'last_name'=>'required', 
-            'email'=>'required' 
-        ]); 
 
-        $comment = Comment::find($id); 
-        $comment->comment = $request->get('comment'); 
-        $comment->first_name = $request->get('first_name'); 
-        $comment->last_name = $request->get('last_name'); 
-        $comment->email = $request->get('email');  
-        $comment->tone = $request->get('tone'); 
-        $comment->save(); 
-
-        return redirect('/comments')->with('success', 'Comment updated!'); 
     } 
 
     /**
