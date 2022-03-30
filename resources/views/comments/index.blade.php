@@ -55,7 +55,7 @@
     <div id="terminology"> 
       <h3>Terminology Comments</h3>
       <p>Method, Mathematics and Proper Terminology</p>        
-      <table class="table table-modify"> 
+      <table class="table table-zebra"> 
         <thead> 
             <tr> 
               <td>ID</td>

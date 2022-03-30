@@ -9,33 +9,36 @@
   <body>
     <h1 id="header">Verify Comment Bank</h1>
     <div> 
-      <a href="/" class="btn btn-primary">Back to Main Menu</a>
+      <a href="/" class="btn btn-primary">Back to Main Menu</a><a href="#verified" class="btn btn-primary">Verified</a><a href="#unverified" class="btn btn-primary">Unverified</a>
       <br></br> 
     </div>
     <div id="unverified"> 
-      <h3>Unverified Comments</h3>
-            @foreach($unverified as $comment) 
-            <form action="{{ route('comments.store')}}" method="post"> 
-            @csrf 
-            <label for="comment">Comment:</label> 
-            <input type="text" class="form-control" name="id" value="{{$comment->id}}">
-            <input type="text" class="form-control" name="comment" value="{{$comment->comment}}">
-            <label for="comment">Contributer:</label> 
-            <input type="text" class="form-control" name="first_name" value="{{$comment->first_name}}">
-            <input type="text" class="form-control" name="last_name" value="{{$comment->last_name}}">
-            <input type="text" class="form-control" name="email" value="{{$comment->email}}">
-            <label for="comment">Tone:</label> 
-            <input type="text" class="form-control" name="tone" value="{{$comment->tone}}">
-            <label for="comment">Type:</label> 
-            <input type="text" class="form-control" name="type" value="{{$comment->type}}">
-            <button class="btn btn-primary" type="submit">Verify</button> 
-            </form> 
-            @endforeach 
-        </tbody> 
-      </table> 
+      <h2>Approve Unverified Comments</h2>  
+      @foreach($unverified as $comment) 
+      <form action="{{ route('comments.store')}}" method="post"> 
+      @csrf 
+      <input type="hidden" class="form-control" name="id" value="{{$comment->id}}">
+      <label for="comment">Comment:</label> 
+      <input type="text" class="form-control" name="comment" value="{{$comment->comment}}">
+      <label for="details">Context:</label>
+      <input type="text" class="form-control" name="details" value="{{$comment->tone}} {{$comment->type}} comment by {{$comment->first_name}} {{$comment->last_name}}, ({{$comment->email}}).">
+      <input type="hidden" class="form-control" name="first_name" value="{{$comment->first_name}}">
+      <input type="hidden" class="form-control" name="last_name" value="{{$comment->last_name}}">
+      <input type="hidden" class="form-control" name="email" value="{{$comment->email}}">
+      <input type="hidden" class="form-control" name="tone" value="{{$comment->tone}}">
+      <input type="hidden" class="form-control" name="type" value="{{$comment->type}}">
+      <button class="btn btn-primary" type="submit">Approve</button> 
+      </form>
+      <form action="{{ route('verify.destroy', $comment->id)}}" method="post"> 
+        @csrf        
+        @method('DELETE') 
+        <button style="margin-left:15px" class="btn btn-danger" type="submit">Disapprove</button> 
+        <br></br>
+      </form> 
+      @endforeach  
     </div>
     <div id="verified"> 
-      <h3>Verified Comments</h3>
+      <h2>Modify Verified Comments</h2>
     <div id="results"> 
       <h3>Results Comments</h3>
       <p>Results and Analysis</p>        
@@ -79,7 +82,7 @@
     <div id="terminology"> 
       <h3>Terminology Comments</h3>
       <p>Method, Mathematics and Proper Terminology</p>        
-      <table class="table table-modify"> 
+      <table class="table table-zebra"> 
         <thead> 
             <tr> 
               <td>ID</td>

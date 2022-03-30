@@ -28,7 +28,7 @@
                 <tbody>
                     @foreach($results as $comment) 
                     <tr>
-                        <td><input type="button" class="btn btn-action" value="Select" onclick="addComment({{$comment}})"> RE {{$comment->id}}. {{$comment->comment}}. ({{$comment->first_name}} {{$comment->last_name}})<p></p></td> 
+                        <td><input type="button" class="btn btn-action" value="Select" onclick="addComment({{$comment}})"> RE. {{$comment->comment}} (by {{$comment->first_name}} {{$comment->last_name}})<p></p></td> 
                     </tr>
                     @endforeach 
                 </tbody>
@@ -46,7 +46,7 @@
                 <tbody>
                     @foreach($terminologies as $comment) 
                     <tr>
-                        <td><input type="button" class="btn btn-action" value="Select" onclick="addComment({{$comment}})"> TE {{$comment->id}}. {{$comment->comment}}. ({{$comment->first_name}} {{$comment->last_name}})</p></td> 
+                        <td><input type="button" class="btn btn-action" value="Select" onclick="addComment({{$comment}})"> TE. {{$comment->comment}} ({{$comment->first_name}} {{$comment->last_name}})</p></td> 
                     </tr>
                     @endforeach 
                 </tbody>
@@ -65,7 +65,7 @@
                     txt += comment[x] + "  ";
                 };
                 const myArray = txt.split("  ");
-                output += myArray[3] + ".<br>";
+                output += myArray[3] + "<br>";
                 document.getElementById("display").innerHTML = output;
             }
             function clearComments() {
