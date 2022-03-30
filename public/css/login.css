@@ -1,0 +1,76 @@
+/* Center the image and position the close button */
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+  }
+  
+  img.avatar {
+    width: 20%;
+    border-radius: 50%;
+  }
+  
+  .container {
+    padding: 16px;
+  }
+  
+  /* The Modal (background) */
+  .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    padding-top: 60px;
+  }
+  
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 35%; /* Could be more or less, depending on screen size */
+  }
+  
+  .btn{
+    font: bold 13px Arial;
+    text-decoration: none;
+    letter-spacing: .1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 8px 8px 8px 8px;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #333333;
+    border-bottom: 1px solid #333333;
+    border-left: 1px solid #CCCCCC;
+    color: #636b6f;
+    border-radius: 4px;
+  }
+  .btn:hover {
+    background-color: #CCCCCC;
+    cursor: pointer;
+  }
+  
+  .btn-danger {
+    background-color: #c00000;
+    color: #fff;
+    margin: 15px;
+  }
+  
+  .btn-primary, .btn-action {
+    background-color: #fff;
+    color: #636b6f;
+  }
+  
+  .btn-primary {
+    margin: 15px;
+  }
+  
+  input[type=text], input[type=password], select, textarea, .display {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; 
+    margin-top: 6px; 
+    margin-bottom: 16px;
+  }

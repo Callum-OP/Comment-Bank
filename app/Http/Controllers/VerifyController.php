@@ -13,7 +13,7 @@ class VerifyController extends Controller
         $terminologies = Terminology::all();
         $results = Results::all();
 
-        return view('verify.login', compact('terminologies'), compact('results'));
+        return view('welcome', compact('terminologies'), compact('results'));
     }
 
     public function show()
@@ -21,7 +21,7 @@ class VerifyController extends Controller
         $terminologies = Terminology::all();
         $results = Results::all();
 
-        return view('verify.login', compact('terminologies'), compact('results'));
+        return view('welcome', compact('terminologies'), compact('results'));
     }
 
     public function store(Request $request)

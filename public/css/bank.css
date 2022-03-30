@@ -8,6 +8,15 @@ html, body{
   padding: 20px;
 }
 
+.content {
+  text-align: center;
+}
+
+.title {
+  font-size: 84px;
+  margin-bottom: 30px;
+}
+
 .btn{
   font: bold 13px Arial;
   text-decoration: none;
@@ -55,7 +64,7 @@ table {
   padding: 40px;
 }
 
-input[type=text], select, textarea, .display {
+input[type=text], input[type=password], select, textarea, .display {
   width: 100%;
   padding: 12px;
   border: 1px solid #ccc;
@@ -76,27 +85,5 @@ input[type=submit] {
 input[type=submit]:hover {
   background-color: #333333;
   color: white;
-}
-
-.login {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  padding-top: 60px;
-}
-
-/* Modal Content/Box */
-.login-content {
-  background-color: #fefefe;
-  margin: 5px auto; /* 15% from the top and centered */
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
 }
 
