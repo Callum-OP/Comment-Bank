@@ -9,7 +9,7 @@
   <body>
     <h1 id="header">Verify Comment Bank</h1>
     <div> 
-      <a href="/" class="btn btn-primary">Back to Main Menu</a><a href="#verified" class="btn btn-primary">Verified</a><a href="#unverified" class="btn btn-primary">Unverified</a>
+      <a href="/" class="btn btn-primary">Back to Main Menu</a><a href="#unverified" class="btn btn-primary">To Unverified</a><a href="#verified" class="btn btn-primary">To Verified</a>
       <br></br> 
     </div>
     <div id="unverified"> 
@@ -39,13 +39,13 @@
     </div>
     <div id="verified"> 
       <h2>Modify Verified Comments</h2>
+      <a href="/" class="btn btn-primary">Back to Main Menu</a><a href="#results" class="btn btn-primary">To Results</a><a href="#terminology" class="btn btn-primary">To Terminology</a>
     <div id="results"> 
       <h3>Results Comments</h3>
       <p>Results and Analysis</p>        
       <table class="table table-zebra"> 
         <thead> 
             <tr> 
-              <td>ID</td>
               <td>Comment</td> 
               <td>Name</td> 
               <td>Email</td> 
@@ -56,7 +56,6 @@
         <tbody> 
             @foreach($results as $comment) 
             <tr> 
-                <td>{{$comment->id}}</td> 
                 <td>{{$comment->comment}}</td> 
                 <td>{{$comment->first_name}} {{$comment->last_name}}</td> 
                 <td>{{$comment->email}}</td> 
@@ -85,7 +84,6 @@
       <table class="table table-zebra"> 
         <thead> 
             <tr> 
-              <td>ID</td>
               <td>Comment</td> 
               <td>Name</td> 
               <td>Email</td> 
@@ -96,7 +94,6 @@
         <tbody> 
             @foreach($terminologies as $comment) 
             <tr> 
-                <td>{{$comment->id}}</td> 
                 <td>{{$comment->comment}}</td> 
                 <td>{{$comment->first_name}} {{$comment->last_name}}</td> 
                 <td>{{$comment->email}}</td> 

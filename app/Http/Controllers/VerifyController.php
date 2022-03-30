@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Unverified;
-use App\Terminology;
 use App\Results;
+use App\Terminology;
+use App\Unverified;
 
 class VerifyController extends Controller
 {

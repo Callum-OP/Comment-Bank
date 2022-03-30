@@ -3,20 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Results;
 use App\Terminology;
 use App\Unverified;
 
 class TerminologyController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -59,17 +51,6 @@ class TerminologyController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -104,13 +85,22 @@ class TerminologyController extends Controller
         $terminologies->tone = $request->get('tone'); 
         $terminologies->save(); 
 
-        return redirect('/comments')->with('success', 'Comment updated!'); 
+        $unverified = Unverified::all();
+        $results = Results::all();
+        $terminologies = Terminology::all();
+
+        return view('verify.admin', compact('unverified', 'results', 'terminologies'))->with('success', 'Comment updated!'); 
     }
 
     public function destroy($id)
     {
         $request = Terminology::find($id); 
         $request->delete(); 
-        return redirect('/verify')->with('success', 'Comment deleted!');
+
+        $unverified = Unverified::all();
+        $results = Results::all();
+        $terminologies = Terminology::all();
+
+        return view('verify.admin', compact('unverified', 'results', 'terminologies'))->with('success', 'Comment deleted!'); 
     }
 }

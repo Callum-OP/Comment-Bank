@@ -4,19 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Results;
+use App\Terminology;
 use App\Unverified;
 
 class ResultsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
 
     /**
      * Show the form for creating a new resource.
@@ -61,17 +53,6 @@ class ResultsController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -98,7 +79,7 @@ class ResultsController extends Controller
             'email'=>'required' 
         ]); 
 
-        $results = Results::find($id); 
+        $results = Results::find($id);
         $results->comment = $request->get('comment'); 
         $results->first_name = $request->get('first_name'); 
         $results->last_name = $request->get('last_name'); 
@@ -106,7 +87,11 @@ class ResultsController extends Controller
         $results->tone = $request->get('tone'); 
         $results->save(); 
 
-        return redirect('/comments')->with('success', 'Comment updated!'); 
+        $unverified = Unverified::all();
+        $results = Results::all();
+        $terminologies = Terminology::all();
+
+        return view('verify.admin', compact('unverified', 'results', 'terminologies'))->with('success', 'Comment updated!'); 
     }
 
     /**
@@ -119,6 +104,11 @@ class ResultsController extends Controller
     {
         $request = Results::find($id); 
         $request->delete(); 
-        return redirect('/verify')->with('success', 'Comment deleted!');
+        
+        $unverified = Unverified::all();
+        $results = Results::all();
+        $terminologies = Terminology::all();
+
+        return view('verify.admin', compact('unverified', 'results', 'terminologies'))->with('success', 'Comment deleted!'); 
     }
 }

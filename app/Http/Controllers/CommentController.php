@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Terminology;
 use App\Results;
+use App\Terminology;
 use App\Unverified;
 
 class CommentController extends Controller
