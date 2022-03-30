@@ -4,13 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Comment extends Model
+class Unverified extends Model
 {
     protected $fillable = [ 
         'comment', 
         'first_name', 
         'last_name', 
         'email', 
-        'tone',        
+        'tone',
+        'type',        
     ];
 }

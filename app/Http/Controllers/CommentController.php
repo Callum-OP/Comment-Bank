@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Terminology;
 use App\Results;
+use App\Unverified;
 
 class CommentController extends Controller
 {
@@ -21,14 +22,6 @@ class CommentController extends Controller
         return view('comments.index', compact('terminologies'), compact('results'));
     }
 
-    public function verify()
-    {
-        $terminologies = Terminology::all();
-        $results = Results::all();
-
-        return view('comments.verify', compact('terminologies'), compact('results'));
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -37,7 +30,7 @@ class CommentController extends Controller
     public function create()
     {
         { 
-            return view('comments.create'); 
+            return view('verify.create'); 
         }
     }
 
@@ -49,7 +42,44 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-
+        $request->validate([ 
+            'comment'=>'required', 
+            'first_name'=>'required', 
+            'last_name'=>'required', 
+            'email'=>'required'
+        ]); 
+        $terminologies = new Terminology([ 
+            'comment' => $request->get('comment'),
+            'first_name' => $request->get('first_name'), 
+            'last_name' => $request->get('last_name'), 
+            'email' => $request->get('email'), 
+            'tone' => $request->get('tone')
+        ]); 
+        $terminologies->save();
+        if($request->get('type') == "results") {
+            $results = new Results([ 
+                'comment' => $request->get('comment'),
+                'first_name' => $request->get('first_name'), 
+                'last_name' => $request->get('last_name'), 
+                'email' => $request->get('email'), 
+                'tone' => $request->get('tone')
+            ]); 
+            $id = Unverified::find($request->get('id')); 
+            $this->destroy($id);   
+            $results->save();
+        } else if($request->get('type') == "terminology") {
+            $terminologies = new Terminology([ 
+                'comment' => $request->get('comment'),
+                'first_name' => $request->get('first_name'), 
+                'last_name' => $request->get('last_name'), 
+                'email' => $request->get('email'), 
+                'tone' => $request->get('tone')
+            ]); 
+            $id = Unverified::find($request->get('id')); 
+            $this->destroy($id); 
+            $terminologies->save();
+        }
+        return redirect('/')->with('success', 'Comment verified!');
     }
 
     /**
@@ -75,9 +105,9 @@ class CommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update($id) 
+    public function edit($id) 
     { 
-
+        
     }       
 
                 /**
@@ -86,7 +116,7 @@ class CommentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request, $id)
+    public function update(Request $request, $id)
     {
 
     } 
@@ -99,9 +129,8 @@ class CommentController extends Controller
      */
     public function destroy($id)
     {
-        $comment = Comment::find($id); 
-        $comment->delete(); 
-
-        return redirect('/comments')->with('success', 'Comment deleted!');
+        $request = Unverified::find($id); 
+        $request->each->delete(); 
+        return redirect('/')->with('success', 'Comment discarded!');
     }
 }

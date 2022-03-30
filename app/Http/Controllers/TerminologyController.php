@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Terminology;
+use App\Unverified;
 
 class TerminologyController extends Controller
 {
@@ -36,6 +37,7 @@ class TerminologyController extends Controller
      */
     public function store(Request $request)
     {
+        $type = "terminology";
         $request->validate([ 
             'comment'=>'required', 
             'first_name'=>'required', 
@@ -43,14 +45,15 @@ class TerminologyController extends Controller
             'email'=>'required'
         ]); 
         {
-            $terminologies = new Terminology([ 
+            $unverified = new Unverified([ 
                 'comment' => $request->get('comment'),
                 'first_name' => $request->get('first_name'), 
                 'last_name' => $request->get('last_name'), 
                 'email' => $request->get('email'), 
-                'tone' => $request->get('tone')
+                'tone' => $request->get('tone'),
+                'type' => $type
             ]); 
-            $terminologies->save(); 
+            $unverified->save(); 
         }
         return redirect('/')->with('success', 'Comment saved!');
     }
@@ -102,5 +105,12 @@ class TerminologyController extends Controller
         $terminologies->save(); 
 
         return redirect('/comments')->with('success', 'Comment updated!'); 
+    }
+
+    public function destroy($id)
+    {
+        $request = Terminology::find($id); 
+        $request->delete(); 
+        return redirect('/verify')->with('success', 'Comment deleted!');
     }
 }

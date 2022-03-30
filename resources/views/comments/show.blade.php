@@ -20,30 +20,36 @@
             <input type="button" class="btn btn-primary" value="Clear Selection" onclick="clearComments()">
         </div>
         <div id="results">
-            <h3>Results Comments</h3>         
-            <table class="table table-zebra"> 
-                <div>
+            <h3>Results Comments</h3>        
+            <table class="table table-zebra">
+                <thead>  
+                    <td>Results and Analysis</td> 
+                </thead> 
+                <tbody>
                     @foreach($results as $comment) 
                     <tr>
                         <td><input type="button" class="btn btn-action" value="Select" onclick="addComment({{$comment}})"> RE {{$comment->id}}. {{$comment->comment}}. ({{$comment->first_name}} {{$comment->last_name}})<p></p></td> 
                     </tr>
                     @endforeach 
-                </div>
+                </tbody>
             </table>
             <p></p>
             <a href="{{ route('results.create')}}" class="btn btn-primary">New Results Comment</a><a href="#header" class="btn btn-primary">To Header</a>
             <br></br>
         </div>
         <div id="terminology">
-            <h3>Terminology Comments</h3>
+            <h3>Terminology Comments</h3>      
             <table class="table table-zebra"> 
-                <div>
+                <thead>  
+                    <td>Method, Mathematics and Proper Terminology</td> 
+                </thead> 
+                <tbody>
                     @foreach($terminologies as $comment) 
                     <tr>
                         <td><input type="button" class="btn btn-action" value="Select" onclick="addComment({{$comment}})"> TE {{$comment->id}}. {{$comment->comment}}. ({{$comment->first_name}} {{$comment->last_name}})</p></td> 
                     </tr>
                     @endforeach 
-                </div>
+                </tbody>
             </table>
             <p></p>
             <a href="{{ route('terminologies.create')}}" class="btn btn-primary">New Terminology Comment</a><a href="#header" class="btn btn-primary">To Header</a>

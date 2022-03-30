@@ -14,6 +14,7 @@
     </div>
     <div id="results"> 
       <h3>Results Comments</h3>
+      <p>Results and Analysis</p>        
       <table class="table table-zebra"> 
         <thead> 
             <tr> 
@@ -37,7 +38,7 @@
                     <a href="{{ route('results.edit',$comment->id)}}" class="btn btn-action">Edit</a> 
                 </td> 
                 <td> 
-                    <form action="{{ route('comments.destroy', $comment->id)}}" method="post"> 
+                    <form action="{{ route('results.destroy', $comment->id)}}" method="post"> 
                       @csrf 
                       @method('DELETE') 
                       <button class="btn btn-danger" type="submit">Delete</button> 
@@ -53,6 +54,7 @@
     </div>
     <div id="terminology"> 
       <h3>Terminology Comments</h3>
+      <p>Method, Mathematics and Proper Terminology</p>        
       <table class="table table-modify"> 
         <thead> 
             <tr> 
@@ -76,7 +78,7 @@
                     <a href="{{ route('terminologies.edit',$comment->id)}}" class="btn btn-action">Edit</a> 
                 </td> 
                 <td> 
-                    <form action="{{ route('comments.destroy', $comment->id)}}" method="post"> 
+                    <form action="{{ route('terminologies.destroy', $comment->id)}}" method="post"> 
                       @csrf 
                       @method('DELETE') 
                       <button class="btn btn-danger" type="submit">Delete</button> 

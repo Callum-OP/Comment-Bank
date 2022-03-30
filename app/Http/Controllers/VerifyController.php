@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Unverified;
 use App\Terminology;
 use App\Results;
 
@@ -10,24 +11,19 @@ class VerifyController extends Controller
 {
     public function index()
     {
-        $terminologies = Terminology::all();
-        $results = Results::all();
-
-        return view('welcome', compact('terminologies'), compact('results'));
+        return view('welcome');
     }
 
     public function show()
     {
-        $terminologies = Terminology::all();
-        $results = Results::all();
-
-        return view('welcome', compact('terminologies'), compact('results'));
+        return view('welcome');
     }
 
     public function store(Request $request)
     {
-        $terminologies = Terminology::all();
+        $unverified = Unverified::all();
         $results = Results::all();
+        $terminologies = Terminology::all();
 
         $request->validate([ 
             'uname'=>'required', 
@@ -35,7 +31,7 @@ class VerifyController extends Controller
         ]); 
         if($request->get('uname') == "admin"){
             if($request->get('psw') == "password"){
-                return view('verify.admin', compact('terminologies'), compact('results'));
+                return view('verify.admin', compact('unverified', 'results', 'terminologies'));
             } else {
                 return redirect('/')->with('failed', 'Incorrect details');
             }
@@ -43,5 +39,12 @@ class VerifyController extends Controller
             return redirect('/')->with('failed', 'Incorrect details');
         }
         return redirect('/')->with('failed', 'no details');
+    }
+
+    public function destroy($id)
+    {
+        $request = Unverified::find($id); 
+        $request->delete(); 
+        return redirect('/')->with('success', 'Comment discarded!');
     }
 }

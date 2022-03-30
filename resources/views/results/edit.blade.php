@@ -3,7 +3,7 @@
 <div class="container"> 
     <h1 class="display-3">Update Results Comment</h1> 
     <div> 
-        <a style="margin: 15px;" href="/" class = "btn btn-primary">Back to Main Menu</a>
+        <a href="/" class = "btn btn-primary">Back to Main Menu</a>
         <br><p></p></br>
     </div>
     @if ($errors->any()) 
@@ -40,7 +40,7 @@
             <input type="radio" class="form-control" name="tone" value="Positive">Positive</input>
             <input type="radio" class="form-control" name="tone" value="Negative">Negative</input>
         </div> 
-        <button style="margin: 15px;" type="submit" class="btn btn-primary">Update</button> 
+        <button type="submit" class="btn btn-primary">Update</button> 
     </form> 
 </div>  
 @endsection

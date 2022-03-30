@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Results;
+use App\Unverified;
 
 class ResultsController extends Controller
 {
@@ -37,6 +38,7 @@ class ResultsController extends Controller
      */
     public function store(Request $request)
     {
+        $type = "results";
         $request->validate([ 
             'comment'=>'required', 
             'first_name'=>'required', 
@@ -44,14 +46,15 @@ class ResultsController extends Controller
             'email'=>'required'
         ]); 
         {
-            $results = new Results([ 
+            $unverified = new Unverified([ 
                 'comment' => $request->get('comment'),
                 'first_name' => $request->get('first_name'), 
                 'last_name' => $request->get('last_name'), 
                 'email' => $request->get('email'), 
-                'tone' => $request->get('tone')
+                'tone' => $request->get('tone'),
+                'type' => $type
             ]); 
-            $results->save();
+            $unverified->save();
         } 
 
         return redirect('/')->with('success', 'Comment saved!');
@@ -114,6 +117,8 @@ class ResultsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $request = Results::find($id); 
+        $request->delete(); 
+        return redirect('/verify')->with('success', 'Comment deleted!');
     }
 }

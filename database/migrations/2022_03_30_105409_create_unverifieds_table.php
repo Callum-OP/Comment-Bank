@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCommentsTable extends Migration
+class CreateUnverifiedsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,15 @@ class CreateCommentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('comments', function (Blueprint $table) {
+        Schema::create('unverifieds', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
             $table->string('comment');   
             $table->string('first_name'); 
             $table->string('last_name'); 
             $table->string('email'); 
-            $table->string('tone');             
+            $table->string('tone');
+            $table->string('type');
         });
     }
 
@@ -31,6 +32,6 @@ class CreateCommentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('comments');
+        Schema::dropIfExists('unverifieds');
     }
 }
