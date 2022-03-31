@@ -2,7 +2,7 @@
 @section('main') 
 <div class="container"> 
     @if(session()->get('success')) 
-    <div class="alert alert-success"> 
+    <div class="alert"> 
         {{ session()->get('success') }}   
     </div> 
     @endif  
@@ -17,10 +17,9 @@
         <!-- Show Selected Comments -->
         <div id="selection">
             <h3>Selected Comments</h3>
-            <input type="button" class="btn btn-primary" value="Copy Selection" onclick="copyComments()">
             <p>You can copy the comments you want to use from here.</p>
             <p id="display" class="display"></p>
-            <input type="button" class="btn btn-primary" value="Clear Selection" onclick="clearComments()">
+            <input type="button" class="btn btn-primary" value="Copy Selection to clipboard" onclick="copyComments()"><input type="button" class="btn btn-danger" value="Clear Selection" onclick="clearComments()">
         </div>
         <!-- Show Results Comments -->
         <div id="results">
@@ -61,7 +60,7 @@
             <br></br>
         </div>
         <script>
-            let output = "";
+            let selectionOutput = "";
             let emptyOutput = "No comments added yet";
             document.getElementById("display").innerHTML = emptyOutput;
             
@@ -72,19 +71,17 @@
                     txt += comment[x] + "  ";
                 };
                 const myArray = txt.split("  ");
-                output += myArray[3] + "<br>";
-                document.getElementById("display").innerHTML = output;
+                selectionOutput += myArray[3] + " ";
+                document.getElementById("display").innerHTML = selectionOutput;
             }
-            //function to remove all comments being displayed in selection
+            //function to remove all selected comments from selection
             function clearComments() {
-                output = "";
+                selectionOutput = "";
                 document.getElementById("display").innerHTML = emptyOutput;
             }
-            //function to copy comments in selection
+            //function to copy selected comments
             function copyComments() {
-                var copy = document.getElementById("display").innerHTML;
-                copy.select();
-                navigator.clipboard.writeText("Hello World");
+                navigator.clipboard.writeText(selectionOutput);
             }
         </script>
     </body>

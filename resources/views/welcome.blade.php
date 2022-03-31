@@ -3,6 +3,11 @@
     <div id="container">
         <!-- Header -->
         <head>
+        @if(session()->get('failed')) 
+        <div class="alert"> 
+            {{ session()->get('failed') }}  
+        </div> 
+        @endif
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1">
 

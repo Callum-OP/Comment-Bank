@@ -87,3 +87,8 @@ input[type=submit]:hover {
   color: white;
 }
 
+.alert {
+  text-align: center;
+  margin: 20px;
+}
+

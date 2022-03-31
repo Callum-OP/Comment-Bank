@@ -2,8 +2,8 @@
 @section('main') 
 <div class="container">  
   @if(session()->get('success')) 
-  <div class="alert alert-success"> 
-    {{ session()->get('success') }}   
+  <div class="alert"> 
+    {{ session()->get('success') }}  
   </div> 
   @endif  
   <body>

@@ -58,6 +58,6 @@ class VerifyController extends Controller
         $results = Results::all();
         $terminologies = Terminology::all();
 
-        return view('verify.admin', compact('unverified', 'results', 'terminologies'))->with('success', 'Comment deleted!'); 
+        return view('verify.admin', compact('unverified', 'results', 'terminologies'));
     }
 }
