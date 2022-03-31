@@ -64,7 +64,7 @@ table {
   padding: 40px;
 }
 
-input[type=text], input[type=password], select, textarea, .display {
+input[type=text], input[type=password], input[type=email], select, textarea, .display {
   width: 100%;
   padding: 12px;
   border: 1px solid #ccc;

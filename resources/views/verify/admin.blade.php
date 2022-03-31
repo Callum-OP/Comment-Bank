@@ -7,11 +7,13 @@
   </div> 
   @endif  
   <body>
+    <!-- Header -->
     <h1 id="header">Verify Comment Bank</h1>
     <div> 
       <a href="/" class="btn btn-primary">Back to Main Menu</a><a href="#unverified" class="btn btn-primary">To Unverified</a><a href="#verified" class="btn btn-primary">To Verified</a>
       <br></br> 
     </div>
+    <!-- Show Unverified Comments -->
     <div id="unverified"> 
       <h2>Approve Unverified Comments</h2>  
       @foreach($unverified as $comment) 
@@ -37,9 +39,11 @@
       </form> 
       @endforeach  
     </div>
+    <!-- Show Verified Comments -->
     <div id="verified"> 
       <h2>Modify Verified Comments</h2>
       <a href="/" class="btn btn-primary">Back to Main Menu</a><a href="#results" class="btn btn-primary">To Results</a><a href="#terminology" class="btn btn-primary">To Terminology</a>
+    <!-- Show Results Comments -->
     <div id="results"> 
       <h3>Results Comments</h3>
       <p>Results and Analysis</p>        
@@ -78,6 +82,7 @@
       <a href="{{ route('results.create')}}" class="btn btn-primary">New Results Comment</a><a href="#header" class="btn btn-primary">To Header</a>
       <br></br>
     </div>
+    <!-- Show Terminology Comments -->
     <div id="terminology"> 
       <h3>Terminology Comments</h3>
       <p>Method, Mathematics and Proper Terminology</p>        

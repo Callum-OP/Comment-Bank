@@ -42,20 +42,15 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
+        // Check if comment meets requirements 
         $request->validate([ 
-            'comment'=>'required', 
-            'first_name'=>'required', 
-            'last_name'=>'required', 
-            'email'=>'required'
+            'comment'=>'required|max:250',
+            'first_name'=>'required|max:50', 
+            'last_name'=>'required|max:50',
+            'email'=>'required|max:50'
         ]); 
-        $terminologies = new Terminology([ 
-            'comment' => $request->get('comment'),
-            'first_name' => $request->get('first_name'), 
-            'last_name' => $request->get('last_name'), 
-            'email' => $request->get('email'), 
-            'tone' => $request->get('tone')
-        ]); 
-        $terminologies->save();
+        // If results comment then add to results table
+        // Else if terminology comment then add to terminology table
         if($request->get('type') == "results") {
             $results = new Results([ 
                 'comment' => $request->get('comment'),
@@ -79,7 +74,11 @@ class CommentController extends Controller
             $this->destroy($id); 
             $terminologies->save();
         }
-        return redirect('/')->with('success', 'Comment verified!');
+        $unverified = Unverified::all();
+        $results = Results::all();
+        $terminologies = Terminology::all();
+
+        return view('verify.admin', compact('unverified', 'results', 'terminologies'));
     }
 
     /**
@@ -96,33 +95,11 @@ class CommentController extends Controller
         $terminologies = Terminology::all();
         $results = Results::all();
 
-        return view('comments.show', compact('terminologies'), compact('results'));        
+        return view('comments.index', compact('terminologies'), compact('results'));        
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id) 
-    { 
-        
-    }       
-
-                /**
-     * Update and add an already created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-
-    } 
-
-    /**
-     * Remove the specified resource from storage.
+     * Remove the specified resource from unverified storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -131,6 +108,7 @@ class CommentController extends Controller
     {
         $request = Unverified::find($id); 
         $request->each->delete(); 
-        return redirect('/')->with('success', 'Comment discarded!');
+        
+        return redirect('/')->with('success', 'Comment removed from unverified!');
     }
 }

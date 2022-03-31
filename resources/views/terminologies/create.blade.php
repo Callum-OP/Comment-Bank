@@ -16,35 +16,36 @@
         </ul> 
       </div><br /> 
     @endif 
+    <!-- Form to add new comment -->
       <form method="post" action="{{ route('terminologies.store')}}">
           @csrf  
           <div class="form-group">     
               <label for="comment">Comment:</label> 
-              <input type="text" class="form-control" name="comment" required> 
+              <input type="text" class="form-control" name="comment" required placeholder="Enter comment" autocomplete="off" required> 
           </div>
 
           <div class="form-group"> 
               <label for="tone">Comment Tone:</label> 
               <input type="radio" class="form-control" name="tone" value="Positive">Positive</input>
-              <input type="radio" class="form-control" name="tone" value="Negative">Negative</input>
+              <input type="radio" class="form-control" name="tone" value="Negative" checked>Negative</input>
           </div> 
 
           <br></br> 
           <div class="form-group">     
               <label for="first_name">First Name:</label> 
-              <input type="text" class="form-control" name="first_name" required autocomplete="off" value="{{ old('first_name') }}"> 
+              <input type="text" class="form-control" name="first_name" placeholder="Enter first name" required> 
           </div> 
 
           <div class="form-group"> 
               <label for="last_name">Last Name:</label> 
-              <input type="text" class="form-control" name="last_name" required> 
+              <input type="text" class="form-control" name="last_name" placeholder="Enter last name" required> 
           </div> 
 
           <div class="form-group"> 
               <label for="email">Email:</label> 
-              <input type="text" class="form-control" name="email" required> 
+              <input type="text" class="form-control" name="email" placeholder="Enter email address" required> 
           </div>                     
-          <button style="margin: 15px;" type="submit" class="btn btn-primary">Add comment</button> 
+          <button type="submit" class="btn btn-primary">Add comment</button> 
       </form> 
   </div> 
 </div> 

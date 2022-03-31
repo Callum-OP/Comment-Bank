@@ -25,10 +25,13 @@ class VerifyController extends Controller
         $results = Results::all();
         $terminologies = Terminology::all();
 
+        // Check if user has entered details
         $request->validate([ 
             'uname'=>'required', 
             'psw'=>'required', 
         ]); 
+        // If details are correct enter admin page
+        // Or else redirect to main menu
         if($request->get('uname') == "admin"){
             if($request->get('psw') == "password"){
                 return view('verify.admin', compact('unverified', 'results', 'terminologies'));
@@ -38,13 +41,23 @@ class VerifyController extends Controller
         } else {
             return redirect('/')->with('failed', 'Incorrect details');
         }
-        return redirect('/')->with('failed', 'no details');
     }
 
+        /**
+     * Remove the specified resource from unverified storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function destroy($id)
     {
         $request = Unverified::find($id); 
         $request->delete(); 
-        return redirect('/')->with('success', 'Comment discarded!');
+        
+        $unverified = Unverified::all();
+        $results = Results::all();
+        $terminologies = Terminology::all();
+
+        return view('verify.admin', compact('unverified', 'results', 'terminologies'))->with('success', 'Comment deleted!'); 
     }
 }

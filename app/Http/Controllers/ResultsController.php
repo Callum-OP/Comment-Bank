@@ -9,6 +9,15 @@ use App\Unverified;
 
 class ResultsController extends Controller
 {
+    public function index()
+    {
+        return view('welcome');
+    }
+
+    public function show()
+    {
+        return view('welcome');
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -30,13 +39,16 @@ class ResultsController extends Controller
      */
     public function store(Request $request)
     {
+        // Check if comment meets requirements 
+        // Change type to results
         $type = "results";
         $request->validate([ 
-            'comment'=>'required', 
-            'first_name'=>'required', 
-            'last_name'=>'required', 
-            'email'=>'required'
+            'comment'=>'required|max:250',
+            'first_name'=>'required|max:50', 
+            'last_name'=>'required|max:50',
+            'email'=>'required|max:50'
         ]); 
+        // Add comment to unverified table
         {
             $unverified = new Unverified([ 
                 'comment' => $request->get('comment'),
@@ -73,12 +85,14 @@ class ResultsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // Check if comment meets requirements 
         $request->validate([ 
-            'first_name'=>'required', 
-            'last_name'=>'required', 
-            'email'=>'required' 
+            'comment'=>'required|max:250',
+            'first_name'=>'required|max:50', 
+            'last_name'=>'required|max:50',
+            'email'=>'required|max:50'
         ]); 
-
+        // Find comment in results table and update it to new comment
         $results = Results::find($id);
         $results->comment = $request->get('comment'); 
         $results->first_name = $request->get('first_name'); 

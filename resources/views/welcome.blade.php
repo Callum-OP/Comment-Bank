@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <div id="container">
+        <!-- Header -->
         <head>
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1">
 
             <title>Comment Bank</title>
 
-            <!-- Fonts -->
-            <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
             <!-- Styles -->
-            <link href="{{ asset('css/bank.css') }}" rel="stylesheet" type="text/css"/>
+            <link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css"/>
             <link href="{{ asset('css/login.css') }}" rel="stylesheet" type="text/css"/> 
         </head>
+        <!-- Body -->
         <body>
             <div class="flex-center position-ref full-height">
                 @if (Route::has('login'))
@@ -29,43 +28,44 @@
                         @endauth
                     </div>
                 @endif
-
                 </div>
-                        <div id="login" class="modal">
-                            <form class="modal-content" action="{{ route('verify.store')}}" method="post">
-                            @csrf
-                                <div class="imgcontainer">
-                                <img src="images/Profile.png" alt="Avatar" class="avatar">
-                                </div>
-                                <div class="container">
-                                <label for="uname"><b>Username</b></label>
-                                <input type="text" placeholder="Enter Username" name="uname" required>
-
-                                <label for="psw"><b>Password</b></label>
-                                <input type="password" placeholder="Enter Password" name="psw" required>
-                                    
-                                <button type="submit" class="btn btn-primary">Login</button>
-                                <button type="button" class="btn btn-danger" onclick="document.getElementById('login').style.display='none'">Cancel</button>
-                                </div>
-                            </form>
+                <!-- PopUp/Modal Login Page -->
+                <div id="login" class="modal">
+                    <form class="modal-content" action="{{ route('verify.store')}}" method="post">
+                    @csrf
+                        <div class="imgcontainer">
+                            <img src="images/Profile.png" alt="Avatar" class="avatar">
                         </div>
+                        <div class="container">
+                            <P>Login as Admin</p>
+                            <label for="uname"><b>Username</b></label>
+                            <input type="text" placeholder="Enter Username" name="uname" required autocomplete="off">
+
+                            <label for="psw"><b>Password</b></label>
+                            <input type="password" placeholder="Enter Password" name="psw" required>
+                                
+                            <button type="submit" class="btn btn-primary">Login</button>
+                            <button type="button" class="btn btn-danger" onclick="document.getElementById('login').style.display='none'">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+                <!-- Main Menu -->
                 <div class="content">
-                <img src="images/Comment.png" alt="Symbol for Comment">
+                    <img src="images/Comment.png" alt="Symbol for Comment">
                     <div class="title">
                         Comment Bank
                     </div>
 
                     <div class="links">
-                        <a class="btn btn-primary" href="comments/view"><b>View Comments</b></a>
-                        <a class="btn btn-primary" href="comments/"><b>Modify Comments</b></a>
+                        <a class="btn btn-primary" href="comments/"><b>View Comments</b></a>
                         <button class="btn btn-primary" onclick="document.getElementById('login').style.display='block'">Verify Comments</button>
                     </div>
 
                     <script>
-                    // Get the modal
+                    // Get the login element
                     var modal = document.getElementById('login');
 
-                    // When the user clicks anywhere outside of the modal, close it
+                    // When user clicks outside of login, close the login
                     window.onclick = function(event) {
                         if (event.target == modal) {
                             modal.style.display = "none";
