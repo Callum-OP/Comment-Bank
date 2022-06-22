@@ -1,4 +1,7 @@
-# Laravel Development Environment
+#Comment Bank
+A web app made using Laravel that allows the user to add and view comments, an admin is able to securely login to a separate page that allows them to verify comments before they are added and they can also edit and delete comments.
+
+## Laravel Development Environment
 ***
 This is a full development environment built around Docker for the Laravel framework.  This package contains setup files to run an apache web server, mysql database server and a full installation of Laravel (check version tag for details).  The image includes a phpMyAdmin GUI database manager for convenience.
 
