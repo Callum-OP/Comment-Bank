@@ -1,4 +1,4 @@
-#Comment Bank
+# Comment Bank
 A web app made using Laravel that allows the user to add and view comments, an admin is able to securely login to a separate page that allows them to verify comments before they are added and they can also edit and delete comments.
 
 ## Laravel Development Environment
